@@ -10,4 +10,4 @@ spec:
   - from:
     - namespaceSelector:
         matchLabels:
-          app: hello
+          hello: allow
