@@ -1,0 +1,16 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-lb-health-check
+spec:
+  policyTypes:
+  - Ingress
+  podSelector: {}
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 35.191.0.0/16
+  - from:
+    - ipBlock:
+        cidr: 130.211.0.0/22
+        
