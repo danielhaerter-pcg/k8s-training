@@ -47,8 +47,6 @@ spec:
         - name: MESSAGE
           value: "Hello Networking Test Deployment"
         resources:
-          # You must specify requests for CPU to autoscale
-          # based on CPU utilization
           requests:
             cpu: "100m" 
           limits:
