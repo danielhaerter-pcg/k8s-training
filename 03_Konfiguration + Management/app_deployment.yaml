@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kubernetes
+spec:
+  selector:
+    matchLabels:
+      app: hello-kubernetes
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes
+    spec:
+      volumes:
+      - name: hello-pv                           # Name des Volumes
+        persistentVolumeClaim:
+         claimName: hello-pvc                    # Verweis auf einen Persistent Volume Claim
+      containers:
+      - name: hello-kubernetes
+        image: europe-west4-docker.pkg.dev/cw-daniel-sandbox/k8s-training/hello-kubernetes:v4
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+        env:
+        - name: PORT
+          value: "8080"
+        - name: KUBERNETES_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: KUBERNETES_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: IMAGE
+          value: "kubernetes.png"
+        - name: MESSAGE
+          value: "Hello Networking Test Deployment"
+        volumeMounts:
+        - mountPath: "/mnt/hello"              # Pfad an dem das persistent Volume eingebunden wird
+          name: hello-pv                       # Verweis auf das oben beschrieben Volume
+        resources:
+          requests:
+            cpu: "100m" 
+          limits:
+            cpu: "250m"
