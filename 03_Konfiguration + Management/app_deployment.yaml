@@ -49,7 +49,7 @@ spec:
         - name: IMAGE
           value: "kubernetes.png"
         - name: MESSAGE
-          value: "Hello Networking Test Deployment"
+          value: "Hello PVC Test Deployment"
         volumeMounts:
         - mountPath: "/mnt/hello"              # Pfad an dem das persistent Volume eingebunden wird
           name: hello-pv                       # Verweis auf das oben beschrieben Volume
