@@ -16,6 +16,9 @@ spec:
       - name: hello-pv                           # Name des Volumes
         persistentVolumeClaim:
          claimName: hello-pvc                    # Verweis auf einen Persistent Volume Claim
+      - name: hello-conf
+        configMap:
+          name: hello-cm
       containers:
       - name: hello-kubernetes
         image: europe-west4-docker.pkg.dev/cw-daniel-sandbox/k8s-training/hello-kubernetes:v4
@@ -53,6 +56,9 @@ spec:
         volumeMounts:
         - mountPath: "/mnt/hello"              # Pfad an dem das persistent Volume eingebunden wird
           name: hello-pv                       # Verweis auf das oben beschrieben Volume
+        - name: hello-conf
+          mountPath: /usr/local/test.conf
+          subPath: test.conf
         resources:
           requests:
             cpu: "100m" 
