@@ -11,3 +11,6 @@ spec:
     - namespaceSelector:
         matchLabels:
           hello: allow
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: ns-academy-marius
