@@ -1,11 +1,11 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: hello-pvc
+  name: ???               # Name für Volume Claim angeben - dieser Name muss später in der Pod oder Deployment Spezifikation verwendet werden
 spec:
-  storageClassName: standard-rwo
+  storageClassName: ???   # Gültige StorageClass angeben. Aktuell im Cluster vorhanden können via "kubectl get storageclass" angezeigt werden
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: ???        # Größe des zu erstellenden Volumes 

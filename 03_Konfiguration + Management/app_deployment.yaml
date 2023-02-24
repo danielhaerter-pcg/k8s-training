@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-kubernetes
+  name: ???                                     # Deployment Name
 spec:
   selector:
     matchLabels:
@@ -10,15 +10,15 @@ spec:
   template:
     metadata:
       labels:
-        app: hello-kubernetes
+        app: hello-kubernetes                    # Labels die später auf dem Pod gesetzt werden 
     spec:
       volumes:
-      - name: hello-pv                           # Name des Volumes
+      - name: ???                                # Name des Volumes. Auf diesen Namen kann im Abschnitt VolumeMount verwiesen werden
         persistentVolumeClaim:
-         claimName: hello-pvc                    # Verweis auf einen Persistent Volume Claim
+         claimName: ???                          # Verweis auf einen Persistent Volume Claim. Der name dazu ist im pvc.yaml zu finden
       - name: hello-conf
         configMap:
-          name: hello-cm
+          name: ???                              # Name der ConfigMap die in configmap.yaml definiert wird.
       containers:
       - name: hello-kubernetes
         image: europe-west4-docker.pkg.dev/cw-daniel-sandbox/k8s-training/hello-kubernetes:v4
@@ -54,13 +54,14 @@ spec:
         - name: MESSAGE
           value: "Hello PVC Test Deployment"
         volumeMounts:
-        - mountPath: "/mnt/hello"              # Pfad an dem das persistent Volume eingebunden wird
-          name: hello-pv                       # Verweis auf das oben beschrieben Volume
-        - name: hello-conf
-          mountPath: /usr/local/test.conf
-          subPath: test.conf
+        - name: ???                            # Verweis auf das oben beschriebene und entsprechend benannte PersistentVolume
+          mountPath: ???                       # Pfad an dem das persistent Volume eingebunden wird. Zum Beispiel /mnt/hello
+        - name: ???                            # Verweis auf die oben benannte ConfigMap als Volume
+          mountPath: /usr/local/test.conf      # Pfad an dem der Inhalt der Config Map (SubPath) gemounted wird
+          subPath: ???                         # Element aus Configmap im Datei Format
         resources:
           requests:
             cpu: "100m" 
           limits:
             cpu: "250m"
+            memory: "250Mi"
