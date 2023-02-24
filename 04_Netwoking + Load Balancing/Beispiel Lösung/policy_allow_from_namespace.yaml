@@ -13,4 +13,4 @@ spec:
           hello: allow
     - namespaceSelector:
         matchLabels:
-          kubernetes.io/metadata.name: ns-academy-marius
+          kubernetes.io/metadata.name: dh-test
