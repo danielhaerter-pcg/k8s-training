@@ -21,7 +21,8 @@ spec:
           name: ???                              # Name der ConfigMap die in configmap.yaml definiert wird.
       containers:
       - name: hello-kubernetes
-        image: europe-west4-docker.pkg.dev/cw-daniel-sandbox/k8s-training/hello-kubernetes:v4
+        image: europe-west4-docker.pkg.dev/cw-daniel-sandbox/k8s-training/hello-kubernetes:v7
+        imagePullPolicy: Always
         ports:
         - name: http
           containerPort: 8080
