@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-cm
+data:
+  magic : "true"    # Simpler Key/Value Eintrag
+
+  test.conf: |      # Key / SubPath in der ConfigMap in der Daten in Text Format angegeben werden. Zum Beispiel für Konfigurationsdateien       
+    hello = yes;
+    readable = true;
