@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ???             # Service Name - Kann zum Beispiel im Ingress verwendet werden
+  annotations:
+                        # Mögliche Annotations in der GKE für Services vom Type Load Balancer siehe:
+                        # https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer-parameters
+spec:
+  ports:
+  - port: ??            # Port auf dem Service von aufrufenden Diensten angefragt werden kann            
+    targetPort: ????    # Port auf dem die über den selector findenden Pods erreichbar sind
+  selector:
+    key: value          # Label Key Value Paar über das die Pods zu finden sind.
+  type: ???             # Service Type. Siehe auch in der Kubernetes Doku: 
+                        # https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types

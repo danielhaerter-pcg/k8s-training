@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ???                                     # Deployment Name
+  name: hello-kubernetes
 spec:
   selector:
     matchLabels:
@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: hello-kubernetes                    # Labels die später auf dem Pod gesetzt werden 
+        app: hello-kubernetes
     spec:
       containers:
       - name: hello-kubernetes
@@ -18,7 +18,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - name: http
-          containerPort: ???                   # exposing Port of the container
+          containerPort: 8080
           protocol: TCP
         livenessProbe:
           httpGet:
@@ -30,8 +30,7 @@ spec:
             port: http
         env:
         - name: PORT
-          value: ???                           # Umgebungsvariable mit der in der Anwendung der ausgehende Port definiert werden kann.
-                                               # Der Wert hier sollte der selbe sein, wie der in spec.containers.ports.containerPort definierte 
+          value: "8080"
         - name: KUBERNETES_POD_NAME
           valueFrom:
             fieldRef:
@@ -44,6 +43,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        - name: LOGLEVEL
+          value: "debug"
+        - name: COLOR
+          value: "red"
         - name: IMAGE
           value: "kubernetes.png"
         - name: MESSAGE

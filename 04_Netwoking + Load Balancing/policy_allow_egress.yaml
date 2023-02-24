@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+       - ipBlock:
+           cidr: ????   # CIDR Range to allow outgoing traffic
+      ports:
+       - protocol: ???  # The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.

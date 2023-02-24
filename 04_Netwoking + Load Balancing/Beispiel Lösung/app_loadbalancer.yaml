@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: hello-kubernetes-int-lb
   labels:
-    app: hello-kubernetes
+    app: hello-kubernetes-service
   annotations:
     networking.gke.io/load-balancer-type: "Internal"
 spec:

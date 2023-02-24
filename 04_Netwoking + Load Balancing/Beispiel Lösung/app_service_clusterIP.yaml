@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: hello-kubernetes-clusterip
   labels:
-    app: hello-kubernetes
+    app: hello-kubernetes-service
 spec:
   ports:
   - port: 80
