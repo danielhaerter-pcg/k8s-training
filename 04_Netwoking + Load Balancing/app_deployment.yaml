@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-kubernetes
-        image: europe-west4-docker.pkg.dev/cw-daniel-sandbox/k8s-training/hello-kubernetes:v7
+        image: europe-west4-docker.pkg.dev/cw-daniel-sandbox/k8s-training/hello-kubernetes:v8
         imagePullPolicy: Always
         ports:
         - name: http
