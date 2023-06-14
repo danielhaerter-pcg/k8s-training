@@ -45,7 +45,7 @@ module "node_pool" {
   }
 
   node_config = {
-    machine_type        = "e2-standard-2"
+    machine_type        = var.machine_type
     disk_size_gb        = 50
     spot                = true
   }

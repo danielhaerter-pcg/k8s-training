@@ -31,3 +31,10 @@ variable "subnet" {
   default = "default"
   description = "Subnet in the region to be used by the GKE Cluster"
 }
+
+variable "machine_type" {
+  type = string
+  default = "e2-standard-2"
+  description = "Machine Type for Cluster nodepool"
+}
+
