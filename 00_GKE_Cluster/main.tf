@@ -77,7 +77,8 @@ resource "google_project_iam_binding" "sa-roles" {
   project = var.project_id
   for_each = toset([
     "roles/logging.logWriter",
-    "roles/monitoring.metricWriter"
+    "roles/monitoring.metricWriter",
+    "roles/artifactregistry.reader"
   ])
   role = each.key
   members = [

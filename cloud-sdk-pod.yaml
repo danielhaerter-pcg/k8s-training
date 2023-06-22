@@ -10,5 +10,9 @@ spec:
     image: google/cloud-sdk:433.0.1-debian_component_based
     command: ["/bin/sleep", "3650d"]
     imagePullPolicy: IfNotPresent
+    securityContext:
+      privileged: true
+      capabilities:
+        add:
+          - SYS_ADMIN
   restartPolicy: Always
-  
